@@ -24,7 +24,7 @@ def GetValue(event):
   e1.insert(0,select['ID'])
   e2.insert(0, select['Student Name'])
   e3.insert(0, select['Course'])
-  e4.insert(0, select['Form number'])
+  e4.insert(0, select['Form Number'])
 
 def Add():
   studid = e1.get()
@@ -63,7 +63,7 @@ def Update():
   studid = e1.get()
   studname = e2.get()
   coursename = e3.get()
-  fee = e4.get()
+  formno = e4.get()
 
   mydb = mysql.connector.connect(
     host="localhost",
@@ -76,7 +76,7 @@ def Update():
 
   try:
     sql = "UPDATE record set stname = %s, course= %s, formno=%s where id=%s"
-    val = (studname, coursename, fee, studid)
+    val = (studname, coursename, formno, studid)
     mycursor.execute(sql, val)
     mydb.commit()
     lastid = mycursor.lastrowid
@@ -197,7 +197,6 @@ e4 = Entry(root)
 e4.place(x=140, y=100)
 
 Button(root, text="Add", command= Add, height=3, bg="cyan", width=13).place(x=30, y=130)
-
 Button(root, text="Update", command=Update, height=3, bg="green yellow", width=13).place(x=140, y=130)
 Button(root, text="Delete", command=Delete, height=3, bg="sienna2", width=13).place(x=250, y=130)
 
